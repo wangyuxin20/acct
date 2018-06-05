@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE generatorConfiguration  
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"  
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">  
+  
+<generatorConfiguration> 
+    <!-- <properties resource="util/generatorConfig.properties" />   -->
+    <classPathEntry location="D:\mysql-connector-java-5.1.39.jar" />
+    <context id="Mysql2Tables" targetRuntime="MyBatis3" defaultModelType="conditional">  
+        <property name="suppressTypeWarnings" value="true" />
+        <!--<plugin type="org.mybatis.generator.plugins.CachePlugin" /> -->
+        <plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin" />
+        <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin" />
+        <!-- 此处是将Example改名为Criteria 当然 想改成什么都行~ --> 
+        <plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">
+            <property name="searchString" value="Example$" />
+            <property name="replaceString" value="Example" />
+        </plugin>
+        <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin" />
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin" />
+        <plugin  type="org.mybatis.generator.plugins.VirtualPrimaryKeyPlugin" /> 
+        <!-- <plugin type="com.shinowit.mybatis.plugin.SelectByPagePlugin" />
+        <plugin type="com.shinowit.mybatis.plugin.Struts2ActionPlugin" /> 
+        <plugin  type="org.mybatis.generator.plugins.MapperConfigPlugin">  
+            <property name="fileName" value="GeneratedMapperConfig.xml" />  
+            <property name="targetPackage" value="com.crm.util" />  
+            <property name="targetProject" value="mybatis-generator" />  
+        </plugin> -->
+        <commentGenerator>  
+             <!-- 去除自动生成的注释 -->  
+             <property name="suppressAllComments" value="true" />  
+        </commentGenerator> 
+        <!-- 数据库的连接信息
+       <jdbcConnection driverClass="com.mysql.jdbc.Driver"  
+            connectionURL="jdbc:mysql://10.199.212.126:3306/drpay"
+            userId="drpay"
+            password="123456">
+             -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"  
+            connectionURL="jdbc:mysql://localhost:3306/apiaccount"
+            userId="root"
+            password="root">
+            
+        </jdbcConnection>
+        <!--<jdbcConnection driverClass="com.mysql.jdbc.Driver"  
+            connectionURL="jdbc:mysql://172.16.3.111.:3306/middle"  
+            userId="root"  
+            password="bibi">  
+        </jdbcConnection> -->  
+        <javaTypeResolver >  
+          <property name="forceBigDecimals" value="false" />  
+        </javaTypeResolver>  
+        <javaModelGenerator targetPackage="com.wd.apiaccount.model.domain" targetProject="src">
+          <property name="enableSubPackages" value="true" />  
+          <property name="trimStrings" value="true" />  
+        </javaModelGenerator>  
+        <sqlMapGenerator targetPackage="com.wd.apiaccount.dao.mapper"  targetProject="src">
+          <property name="enableSubPackages" value="true" />  
+        </sqlMapGenerator>  
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.wd.apiaccount.dao.mapper"  targetProject="src">
+          <property name="enableSubPackages" value="true" />  
+        </javaClientGenerator>
+        <!-- <table schema="reportInfo" tableName="report_info" domainObjectName="ReportInfo" enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">  
+        </table>   -->
+        
+         <!-- tableName:用于自动生成代码的数据库表；domainObjectName:对应于数据库表的javaBean类名 -->
+        
+        <!-- 
+        
+        <table tableName="acct_type" domainObjectName="AcctType"/>
+        <table tableName="pay_log" domainObjectName="PayLog"/>
+        <table tableName="feifan_money_log" domainObjectName="FeifanMoneyLog"/>
+        <table tableName="pay_status_update_log" domainObjectName="PayStatusUpdateLog"/>
+        <table tableName="acct_param" domainObjectName="AcctParam"/>
+        
+        <table tableName="acct_bat" domainObjectName="AcctBat"/>
+        <table tableName="acct_type" domainObjectName="AcctType"/>
+        <table tableName="acct_revive" domainObjectName="AcctRevive"/>
+        <table tableName="acct_order" domainObjectName="AcctOrder"/>
+        <table tableName="acct_valid" domainObjectName="AcctValid"/>    
+        <table tableName="acct_lock" domainObjectName="AcctLock"/>
+        <table tableName="acct_valid" domainObjectName="AcctValid"/>
+        <table tableName="acct_call" domainObjectName="AcctCall"/>
+        <table tableName="acct_curr" domainObjectName="AcctCurr"/>
+        <table tableName="acct_order" domainObjectName="AcctOrder"/>
+        <table tableName="acct_mkt" domainObjectName="AcctMkt"/>
+        <table tableName="acct_biz" domainObjectName="AcctBiz"/>
+        <table tableName="acct_flowfee" domainObjectName="AcctFlowFee"/>
+        
+        <table tableName="acct_mbr" domainObjectName="AcctMbr"/>
+        
+        <table tableName="acct_node0" domainObjectName="AcctNode0"/>
+        <table tableName="acct_node1" domainObjectName="AcctNode1"/>
+        <table tableName="acct_node2" domainObjectName="AcctNode2"/>
+        <table tableName="acct_node3" domainObjectName="AcctNode3"/>
+        <table tableName="acct_node4" domainObjectName="AcctNode4"/>
+        <table tableName="acct_node5" domainObjectName="AcctNode5"/>
+        <table tableName="acct_node6" domainObjectName="AcctNode6"/>
+        <table tableName="acct_node7" domainObjectName="AcctNode7"/>
+        <table tableName="acct_node8" domainObjectName="AcctNode8"/>
+        <table tableName="acct_node9" domainObjectName="AcctNode9"/>
+        
+        <table tableName="acct_tps" domainObjectName="AcctTps"/>
+        <table tableName="acct_mbr" domainObjectName="AcctMbr"/>
+        <table tableName="acct_cluster" domainObjectName="AcctCluster"/>
+        
+        <table tableName="acct_flow_fee_inr" domainObjectName="AcctFlowFeeInr"/>
+        
+        <table tableName="acct_mkt_slot" domainObjectName="AcctMktSlot"/>
+        
+        <table tableName="acct_excode" domainObjectName="AcctExcode"/>
+        
+        <table tableName="acct_mkt" domainObjectName="AcctMkt"/>
+        
+        <table tableName="acct_mkt_slot" domainObjectName="AcctMktSlot"/>
+        
+        <table tableName="acct_lazy_list" domainObjectName="AcctLazyList"/>
+        
+        <table tableName="acct_opncls" domainObjectName="AcctOpncls"/>
+        <table tableName="acct_mkt_rec" domainObjectName="AcctMktRec"/>
+        
+        <table tableName="acct_err" domainObjectName="AcctErr"/>
+        <table tableName="acct_auth" domainObjectName="AcctAuth"/>
+        
+        <table tableName="acct_log" domainObjectName="AcctLog"/>
+        <table tableName="acct_user" domainObjectName="AcctUser"/>
+        
+                
+
+        <table tableName="acct_log" domainObjectName="AcctLog"/>
+        
+        <table tableName="acct_err" domainObjectName="AcctErr"/>
+
+        <table tableName="settle_pact_profit" domainObjectName="SettlePactProfit"/>
+        
+        <table tableName="acct_record" domainObjectName="AcctRecord"/>
+        
+        <table tableName="acct_flow_frz" domainObjectName="AcctFlowFrz"/>
+        
+        <table tableName="acct_dayend_settle" domainObjectName="AcctDayendSettle"/>
+        <table tableName="acct_dayend_dtl" domainObjectName="AcctDayendDtl"/>
+        
+        <table tableName="acct_dayend_settle" domainObjectName="AcctDayendSettle"/>
+        
+        
+        
+        <table tableName="acct_dayend" domainObjectName="AcctDayend"/>
+        
+        <table tableName="acct_user" domainObjectName="AcctUser"/>
+
+        <table tableName="acct_user_bk" domainObjectName="AcctUserBk"/>
+        
+        <table tableName="acct_flow" domainObjectName="AcctFlow"/>
+        <table tableName="acct_odr_card_jointly" domainObjectName="AcctOdrCardJointly"/>
+        <table tableName="acct_odr_card_jointly_kq_resv" domainObjectName="AcctOdrCardJointlyKqResv"/>
+        <table tableName="acct_dayend_hist" domainObjectName="AcctDayendHist"/>
+        <table tableName="acct_odr_card_jointly_kq" domainObjectName="AcctOdrCardJointlyKq"/>
+        <table tableName="acct_settle" domainObjectName="AcctSettle"/>
+        <table tableName="acct_bill" domainObjectName="AcctBill"/>
+        <table tableName="acct_record_sum" domainObjectName="AcctRecordSum"/>
+        <table tableName="acct_proc" domainObjectName="AcctProc"/>
+
+        <table tableName="acct_odr_points" domainObjectName="AcctOdrPoints"/>
+        <table tableName="acct_odr_card" domainObjectName="AcctOdrCard"/>
+        
+        <table tableName="acct_odr_card_mkt" domainObjectName="AcctOdrCardMkt"/>
+        <table tableName="acct" domainObjectName="Acct"/>
+
+        <table tableName="acct_dayend_unfrz" domainObjectName="AcctDayendUnfrz"/>
+
+        <table tableName="acct_dayend_rec" domainObjectName="AcctDayendRec"/>
+        <table tableName="acct_flow_inner" domainObjectName="AcctFlowInner"/>
+            
+        <table tableName="acct_lazy_cfg" domainObjectName="AcctLazyCfg"/>
+        <table tableName="acct_lazy" domainObjectName="AcctLazy"/>
+        
+        <table tableName="acct_thread" domainObjectName="AcctThread"/>
+
+        <table tableName="acct_tran_drcr" domainObjectName="AcctTranDrcr"/>
+        
+        <table tableName="acct_flow_fee_ext" domainObjectName="AcctFlowFeeExt"/>
+        <table tableName="acct_flow_fee_inr" domainObjectName="AcctFlowFeeInr"/>
+        -->
+        
+        <table tableName="acct_flow" domainObjectName="AcctFlow"/>
+
+
+
+
+  </context>
+</generatorConfiguration>  

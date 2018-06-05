@@ -1,4 +1,4 @@
-package com.zh.test.controller;
+package zh.test.controller;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;

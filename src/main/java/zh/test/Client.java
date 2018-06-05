@@ -8,7 +8,7 @@ import java.util.UUID;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import com.zh.test.util.HttpClientUtil;
+import zh.test.util.HttpClientUtil;
 
 public class Client {
 

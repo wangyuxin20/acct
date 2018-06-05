@@ -1,4 +1,4 @@
-package com.zh.test.util;
+package zh.test.util;
 
 import java.util.ArrayList;
 import java.util.Iterator;

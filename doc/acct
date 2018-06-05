@@ -1,0 +1,21 @@
+参考：pom.xml
+
+
+
+http://10.199.192.16:8081/nexus/#view-repositories;thirdparty~browsestorage
+
+
+
+http://maven.intra.ffan.com/nexus/#view-repositories;thirdparty~browseindex
+
+
+
+
+--- MAVEN仓库
+http://10.199.192.16:8081/nexus/#view-repositories
+admin/Wanda2016
+
+
+-- 测试，生产统一的MAVEN仓库
+http://maven.intra.ffan.com/nexus
+upadmin/admin1234

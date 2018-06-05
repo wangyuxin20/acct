@@ -1,10 +1,5 @@
 package com.wa.apiaccount.core.exception;
 
-/**
- * 
- * @author 王宇鑫
- *
- */
 public class BusinessException extends RuntimeException {
     private static final long serialVersionUID = 1L;
 

@@ -1,0 +1,90 @@
+
+创建mvn-repo分支
+首先在你的github上创建一个maven-repo仓库，这个最后将作为实际上jar包发布的仓库
+
+配置本地mvn服务
+找到自己计算机中本地maven配置文件settings.xml,找到其中的 标签，加入如下 配置
+
+    <server>
+        <id>github</id>
+        <username>github的用户名</username>
+        <password>github的密码</password>
+    </server>
+    
+修改pom文件发布本地仓库
+在需要发布的项目中的pom文件里的 标签下加入以下插件
+
+	<plugin>
+	    <artifactId>maven-deploy-plugin</artifactId>
+	    <version>2.8.1</version>
+	    <configuration>
+	    <altDeploymentRepository>internal.repo::default::file://${project.build.directory}/mvn-repo</altDeploymentRepository>
+	    </configuration>
+	</plugin>
+然后运行 mvn clean deploy 命令，即可在对应项目中的target/mvn-repo目录下找到本地的jar
+
+继续修改pom文件发布到远程github上
+修改pom文件，添加属性
+
+	<properties>
+	     <github.global.server>github</github.global.server>
+	</properties>
+
+添加修改插件
+
+	<plugin> 
+	  <groupId>com.github.github</groupId>  
+	  <artifactId>site-maven-plugin</artifactId>  
+	  <version>0.12</version>  
+	  <configuration> 
+	    <message>Maven artifacts for ${project.version}</message>  
+	    <noJekyll>true</noJekyll>  
+	    <outputDirectory>${project.build.directory}/mvn-repo</outputDirectory>  
+	    <branch>refs/heads/master</branch>  
+	    <includes> 
+	      <include>**/*</include> 
+	    </includes>  
+	    <repositoryName>maven-repo</repositoryName>  
+	    <!-- 对应github上创建的仓库名称 name -->  
+	    <repositoryOwner>你的用户名</repositoryOwner>  
+	    <!-- github 仓库所有者 --> 
+	  </configuration>  
+	  <executions> 
+	    <execution> 
+	      <goals> 
+	        <goal>site</goal> 
+	      </goals>  
+	      <phase>deploy</phase> 
+	    </execution> 
+	  </executions> 
+	</plugin>
+
+再次执行 mvn clean deploy命令即可发布到github上了
+
+在自己的项目中使用发布的jar
+pom文件中添加对应仓库
+
+	<repositories>
+	    <repository>
+	        <id>maven-repo-master</id>
+	        <url>https://raw.github.com/hwangfantasy/maven-repo/master/</url>
+	        <snapshots>
+	            <enabled>true</enabled>
+	            <updatePolicy>always</updatePolicy>
+	        </snapshots>
+	    </repository>
+	</repositories>
+
+
+然后添加依赖即可 
+如我自己smart-util
+
+     <dependency>
+        <groupId>com.hwangfantasy</groupId>
+        <artifactId>smart-util</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </dependency>
+    
+
+    
+    

@@ -1,4 +1,4 @@
-package com.zh.test;
+package zh.test;
 
 public class Res<T> {
 	private String hashCode;

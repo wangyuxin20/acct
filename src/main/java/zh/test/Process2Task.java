@@ -1,4 +1,4 @@
-package com.zh.test;
+package zh.test;
 
 import java.util.Random;
 import java.util.concurrent.Callable;
@@ -6,11 +6,11 @@ import java.util.concurrent.ExecutorService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class Process3Task implements Callable<ProcessPOJO>{
-
+public class Process2Task implements Callable<ProcessPOJO>{
+	
 	private ProcessPOJO processPOJO;
 
-    public Process3Task(ProcessPOJO processPOJO) {
+    public Process2Task(ProcessPOJO processPOJO) {
         this.processPOJO = processPOJO;
     }
 
@@ -19,7 +19,7 @@ public class Process3Task implements Callable<ProcessPOJO>{
 		//System.out.println("call() begin  "+ Thread.currentThread().getName());
 				Thread.sleep(1000+getRandom(500,1000));
 				
-				System.out.println("Process3Task is process "+processPOJO.getProcessNo());
+				System.out.println("Process2Task is process "+processPOJO.getProcessNo());
 				
 				long flag = getRandom(0,1);
 				if(flag==0){

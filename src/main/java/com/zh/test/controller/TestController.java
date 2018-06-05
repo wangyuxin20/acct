@@ -11,9 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.common.util.concurrent.ListeningExecutorService;
-import com.zh.test.BossTask;
-import com.zh.test.ProcessPOJO;
-import com.zh.test.ResultMap;
+
+import zh.test.BossTask;
+import zh.test.ProcessPOJO;
+import zh.test.ResultMap;
 
 
 @RestController

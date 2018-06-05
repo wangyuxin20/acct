@@ -1,4 +1,4 @@
-package com.zh.test;
+package zh.test;
 
 
 import java.util.HashMap;
